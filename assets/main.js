@@ -15,7 +15,7 @@ function guess() {
 	var results = getResults(input.value);
 
 	if(results){
-		setMessage('You win :)');
+		setMessage('You Win! :)');
 		showAnswer(true);
 		showReplay();
 	}else if(!results && attempt.value >= 10){
