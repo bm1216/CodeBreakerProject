@@ -8,7 +8,7 @@ function guess() {
     	setHiddenFields();
 	}
 
-	if(!vaildateInput(input.value())){
+	if(!vaildateInput(input.value)){
 		return false;
 	}
 
@@ -29,7 +29,7 @@ function setHiddenFields(){
 
 function setMessage( newMessage ){
 	id = document.getElementById('message');
-	id.setInnnerHTML(newMessage);
+	id.innerHTML(newMessage);
 }
 
 function vaildateInput( input ){
