@@ -12,6 +12,15 @@ function guess() {
 		return false;
 	}
 
+	if(getResults){
+		setMessage("You win! :)");
+	}else if(!getResults && attempt >= 10){
+		setMessage("You Lose! :(");
+	}else{
+		setMessage("Incorrect, try again.");
+	}
+
+
 	attempt++;
 }
 
@@ -36,7 +45,53 @@ function vaildateInput( input ){
 	if(input.length > 4){
 		return true;
 	} else {
-		setMessage("Guessed must be exactly 4 characters long.");
+		setMessage("Guesses must be exactly 4 characters long.");
 		return false;
 	}
 }
+
+function getResults( param ){
+	var div1 = document.getElementById('results');
+	var guessedCorrectly = 0;
+
+	for(var i = 0, x = param.length; i < x; i++){
+		div1.innerHTML += "<div class=\"row\"><span class=\"col-md-6\">'" + param + "'</span><div class=\"col-md-6\">";
+		
+		if(param.charAt(i) == answer.charAt(i)){
+			div1.innerHTML += "<span class=\"glyphicon glyphicon-ok\"></span>";
+			guessedCorrectly++;
+		} else if(answer.includes(param.charAt(i))){
+			div1.innerHTML += "<span class=\"glyphicon glyphicon-transfer\"></span>";
+		} else {
+			div1.innerHTML += "<span class =\"glyphicon glyphicon-remove\"></span>";  		
+		}
+
+		div1.innerHTML += "</div></div>"
+
+		return (guessedCorrectly == answer.length)
+	} 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
