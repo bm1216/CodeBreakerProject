@@ -1,10 +1,10 @@
-let answer = document.getElementById('answer');
-let attempt = document.getElementById('attempt');
+var answer = document.getElementById('answer');
+var attempt = document.getElementById('attempt');
 
 function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
-    if(answer.length == 0 && attempt.length == 0){
+    if(answer.length == 0 || attempt.length == 0){
     	setHiddenFields();
 	}
 
@@ -12,11 +12,11 @@ function guess() {
 		return false;
 	}
 
-	if(getResults){
+	if(getResults(input.value)){
 		setMessage("You win! :)");
 		showAnswer(true);
 		showReplay();
-	}else if(!getResults && attempt >= 10){
+	}else if(!getResults(input.value) && attempt >= 10){
 		setMessage("You Lose! :(");
 		showAnswer(false);
 		showReplay();
@@ -41,12 +41,12 @@ function setHiddenFields(){
 }
 
 function setMessage( newMessage ){
-	id = document.getElementById('message');
+	var id = document.getElementById('message');
 	id.innerHTML(newMessage);
 }
 
 function vaildateInput( input ){
-	if(input.length > 4){
+	if(input.length == 4){
 		return true;
 	} else {
 		setMessage("Guesses must be exactly 4 characters long.");
@@ -70,7 +70,7 @@ function getResults( param ){
 			div1.innerHTML += "<span class =\"glyphicon glyphicon-remove\"></span>";  		
 		}
 
-		div1.innerHTML += "</div></div>"
+		div1.innerHTML += "</div>\n</div>"
 
 		return (guessedCorrectly == answer.length)
 	} 
@@ -78,7 +78,7 @@ function getResults( param ){
 
 function showAnswer( param ){
 	var code = document.getElementById('code');
-	code.innerHTML = answer.value;
+	code.innerHTML = answer;
 	if(param){
 		code.className += "success";
 	} else {
