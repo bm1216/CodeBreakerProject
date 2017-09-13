@@ -15,11 +15,11 @@ function guess() {
 	var results = getResults(input.value);
 
 	if(results){
-		setMessage("You win");
+		setMessage('You win :)');
 		showAnswer(true);
 		showReplay();
 	}else if(!results && attempt.value >= 10){
-		setMessage("You Lose!");
+		setMessage('You Lose! :(');
 		showAnswer(false);
 		showReplay();
 	}else{
@@ -48,7 +48,7 @@ function setMessage( newMessage ){
 	 document.getElementById('message').innerHTML = newMessage;
 }
 
-function vaildateInput( input ){
+function validateInput( input ){
 	if(input.length == 4){
 		return true;
 	} else {
@@ -88,7 +88,7 @@ function getResults( param ){
 
 function showAnswer( param ){
 	var code = document.getElementById('code');
-	code.innerHTML = "<strong>" + answer.value + "</strong>";
+	code.innerHTML = answer.value;
 	if(param){
 		code.className += " success";
 	} else {
