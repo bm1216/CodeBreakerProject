@@ -14,8 +14,12 @@ function guess() {
 
 	if(getResults){
 		setMessage("You win! :)");
+		showAnswer(true);
+		showReplay();
 	}else if(!getResults && attempt >= 10){
 		setMessage("You Lose! :(");
+		showAnswer(false);
+		showReplay();
 	}else{
 		setMessage("Incorrect, try again.");
 	}
@@ -70,6 +74,23 @@ function getResults( param ){
 
 		return (guessedCorrectly == answer.length)
 	} 
+}
+
+function showAnswer( param ){
+	var code = document.getElementById('code');
+	code.innerHTML = answer.value;
+	if(param){
+		code.className += "success";
+	} else {
+		code.className += "failure";
+	}
+}
+
+function showReplay(){
+	var guessing = document.getElementById('guessing-div');
+	var replay = document.getElementById('replay-div');
+	guessing.style.display = "none";
+	replay.style.display = "block";
 }
 
 
